@@ -14,7 +14,7 @@ const CharacterContent = ({fetchCharacterList,characters}) => {
     },[characters?.loading]);
 
     return (
-        <div>my new component</div>
+          <div>my new component</div>
     );
 
 }
