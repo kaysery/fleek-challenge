@@ -1,12 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
-import CharacterContent from './components/CharacterContent';
+import CharacterList from './components/character/CharacterList';
 import {Container} from '@mui/material';
 
 function App() {
   return (
     <Container maxWidth="sm">
-      <CharacterContent></CharacterContent>
+      <CharacterList></CharacterList>
     </Container>
   );
 }
