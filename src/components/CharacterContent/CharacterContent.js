@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
-import * as CharacterActions from '../redux/actions/CharacterActions';
+import * as CharacterActions from '../../redux/actions/CharacterActions';
 
 
 const CharacterContent = ({fetchCharacterList,characters}) => {
