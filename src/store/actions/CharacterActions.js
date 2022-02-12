@@ -11,7 +11,9 @@ export const fetchCharacterList = (filters) => {
 
     axios.get(`https://rickandmortyapi.com/api/character`)
       .then(res => {
-        dispatch(successCharacters(res.data.results));
+        setTimeout(()=>{
+          dispatch(successCharacters(res.data.results));
+        },1500);
       })
       .catch(err => {
         dispatch(errorCharacters());

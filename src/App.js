@@ -1,12 +1,12 @@
 import './App.css';
 import CharacterList from './components/character/CharacterList';
-import {Container} from '@mui/material';
+import Header from './components/shared/Header';
 
 function App() {
   return (
-    <Container maxWidth="sm">
+    <Header>
       <CharacterList></CharacterList>
-    </Container>
+   </Header>
   );
 }
 
