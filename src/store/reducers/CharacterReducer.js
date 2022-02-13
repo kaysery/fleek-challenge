@@ -23,7 +23,8 @@ import {
           ...state,
           loading: false,
           error: false,
-          data: action.payload
+          data: action.payload.results,
+          pagination:action.payload.info
         };
       case FETCH_CHARACTERS_ERROR:
         return {
