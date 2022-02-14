@@ -20,7 +20,7 @@ export const fetchCharacterById = (id) => {
                 uncomment the commented code below
                 */
 
-                //dispatch(successCharacters(res.data));
+                //dispatch(successSingleCharacter(res.data));
                 
                 setTimeout(() => {
                     dispatch(successSingleCharacter(res.data));

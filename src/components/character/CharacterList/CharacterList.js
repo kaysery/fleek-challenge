@@ -76,7 +76,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
     return {
-        characters: state.charactersList,
+        characters: state.characters,
     }
 }
 

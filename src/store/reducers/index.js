@@ -3,5 +3,5 @@ import episodeReducer from './EpisodeReducer';
 import { combineReducers } from 'redux';
 
 export default combineReducers({
-    charactersList: CharacterReducer,
+    characters: CharacterReducer,
   })  
