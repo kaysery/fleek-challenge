@@ -5,22 +5,17 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import { makeStyles } from '@mui/styles';
 import RickAndMortyLogo from '../../../assets/images/RickAndMortyLogo.png'
-import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import CssBaseline from '@mui/material/CssBaseline';
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import useDrawer from "../../../hooks/useDrawer";
+import DrawerMenu from '../DrawerMenu';
+import { ObjToQueryParamsString, isEmpty }  from '../../../utils';
+import { useHistory } from 'react-router-dom';
 
-const DEFAULT_DRAWER_WIDTH = 240;
+const DEFAULT_DRAWER_WIDTH = 340;
 
 const useStyles = makeStyles((theme) => ({
     logo:{
@@ -30,10 +25,20 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const Header = ({window, children})=> {
+  const Header = ({window, children})=> {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [drawerWidth,setDrawerWidth] = useState(DEFAULT_DRAWER_WIDTH);
   const withDrawer = useDrawer();
+  const history = useHistory();
+
+  const onSearchClick = (filters) =>{
+
+    if(!isEmpty(filters)){
+      history.push({
+        search: ObjToQueryParamsString({...filters,page:1})
+      });
+    }
+  }
 
   useEffect(()=>{
       setDrawerWidth(withDrawer? DEFAULT_DRAWER_WIDTH:0);
@@ -44,24 +49,6 @@ const Header = ({window, children})=> {
   };
     const classes = useStyles();
     const container = window !== undefined ? () => window().document.body : undefined;
-
-    const drawer = (
-      <Box sx={{ flexGrow: 1 }}>
-        <Toolbar />
-              <Divider />
-              <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                  <ListItem button key={text}>
-                    <ListItemIcon>
-                      {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                    </ListItemIcon>
-                    <ListItemText primary={text} />
-                  </ListItem>
-                ))}
-              </List>
-      </Box>
-
-    )
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -104,7 +91,7 @@ const Header = ({window, children})=> {
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
           }}
         >
-          {drawer}
+          <DrawerMenu onSearchClick={onSearchClick}/>
         </Drawer>
         <Drawer
           variant="permanent"
@@ -114,7 +101,7 @@ const Header = ({window, children})=> {
           }}
           open
         >
-          {drawer}
+          <DrawerMenu  onSearchClick={onSearchClick}/>
         </Drawer>
       </Box>}
       <Box
@@ -123,7 +110,7 @@ const Header = ({window, children})=> {
              flexGrow: 1,
              p: 3,
              width: { sm: `calc(100% - ${drawerWidth}px)` },
-             maxWidth:'900px',
+             maxWidth:'1000px',
              marginTop:'5rem',
              marginLeft:'auto',
              marginRight:'auto' }}>

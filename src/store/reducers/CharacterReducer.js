@@ -2,6 +2,9 @@ import {
     FETCH_CHARACTERS_ERROR,
     FETCH_CHARACTERS_SUCCESS,
     FETCH_CHARACTERS_LOADING,
+    FETCH_SINGLE_CHARACTER_LOADING,
+    FETCH_SINGLE_CHARACTER_SUCCESS,
+    FETCH_SINGLE_CHARACTER_ERROR,
   } from '../actions/types/CharacterTypes';
   
   const initialState = {
@@ -32,6 +35,26 @@ import {
           loading: false,
           error: true,
         };
+        case FETCH_SINGLE_CHARACTER_LOADING:
+          return {
+            ...state,
+            loading: true,
+            error: false,
+          };
+
+          case FETCH_SINGLE_CHARACTER_SUCCESS:
+            return {
+              ...state,
+              loading: false,
+              error: false,
+              data: action.payload
+            };
+            case FETCH_SINGLE_CHARACTER_ERROR:
+              return {
+                ...state,
+                loading: false,
+                error: true,
+              };
       default:
         return state;
     }

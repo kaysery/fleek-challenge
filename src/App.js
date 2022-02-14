@@ -8,6 +8,7 @@ import {
     Route,
 } from "react-router-dom";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import NotFound from './components/shared/NotFound';
 
 const theme = createTheme({
     palette: {
@@ -26,8 +27,11 @@ function App() {
                 <Route exact path="/">
                         <CharacterList/>
                 </Route>
-                <Route path="/:id">
+                <Route path="/:id" exact>
                         <CharacterDetail/>
+                </Route>
+                <Route>
+                    <NotFound/>
                 </Route>
             </Switch>
             </Header>
