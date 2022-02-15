@@ -13,6 +13,11 @@ import Select from '@mui/material/Select';
 import { useState } from "react";
 import PropTypes from "prop-types";
 
+
+/*This component contain the filters components inside the drawer menu
+*that is rendering on the left side of the page
+* */
+
 const DrawerMenu = ({ onSearchClick }) => {
 
   const [status, setStatus] = useState('');

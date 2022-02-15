@@ -15,9 +15,11 @@ import NavigationIcon from '@mui/icons-material/Navigation';
 import Fab from '@mui/material/Fab';
 import { makeStyles } from '@mui/styles';
 
+/*this component is the container for the cards component that contain brief details about the character
+* this component also containe the pagination logic and the search logic for the character
+* */
 const CharacterList = ({ fetchCharacterList, characters }) => {
 
-    console.log(characters);
     const [page, setPage] = useState(1);
     const [count, setCount] = useState(0);
     const { search } = useLocation();
@@ -26,6 +28,7 @@ const CharacterList = ({ fetchCharacterList, characters }) => {
     const classes = useStyles();
     const refScrollUp = useRef();
 
+    //to hidde/show the scroll up button
     const handleVisibleButton = () => {
         const position = window.pageYOffset;
         if (position > 500) {
@@ -35,6 +38,7 @@ const CharacterList = ({ fetchCharacterList, characters }) => {
         }
     };
 
+    //to scroll up when push the go up button
     const handleScrollUp = () => {
         refScrollUp.current.scrollIntoView({  top: 0, behavior: 'smooth'  });
       };
@@ -43,6 +47,7 @@ const CharacterList = ({ fetchCharacterList, characters }) => {
         window.addEventListener("scroll", handleVisibleButton);
       },[]);
 
+    //taking the query params from url and getting the new list of characters
     useEffect(() => {
         const filterValues = new URLSearchParams(search);
         const filterObj = queryStringToObj(filterValues);
@@ -50,13 +55,11 @@ const CharacterList = ({ fetchCharacterList, characters }) => {
         fetchCharacterList({ ...filterObj });
     }, [search]);
 
-
-
-
     useEffect(() => {
         setCount(characters?.pagination?.pages);
     }, [characters?.pagination]);
 
+    //when a user click pagination changin the query params to page the current page number
     const handlePagination = (event, value) => {
         const filterValues = new URLSearchParams(search);
         const filters = queryStringToObj(filterValues);

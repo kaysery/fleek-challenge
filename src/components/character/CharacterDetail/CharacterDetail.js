@@ -15,32 +15,34 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 
 const MAX_NUMBER_EPISODES = 5;
-
+/*This component is the one that render the details
+*about a specific  character
+* */
 const CharacterDetail = ({ fetchCharacterById, character, fetchEpisodeList, episodes }) => {
     const params = useParams();
     const history = useHistory();
     const [currentTab, setCurrentTab] = React.useState(0);
 
+    //getting the id from the path param /:id
     useEffect(() => {
         const { id } = params;
         fetchCharacterById(id);
     }, [params]);
 
+    //calling the episodes details once the character details was loaded successfully
     useEffect(() => {
-
         if (character && !character?.loading && !character?.error && character?.data?.episode) {
             let episodesTemp = [...character.data.episode];
             if (episodesTemp.length > MAX_NUMBER_EPISODES) {
                 episodesTemp = [...episodesTemp.slice(0, MAX_NUMBER_EPISODES)];
             }
-
             fetchEpisodeList(episodesTemp);
         }
 
     }, [character]);
 
 
-    const handleChange = (event, newValue) => {
+    const handleTabChange = (event, newValue) => {
         setCurrentTab(newValue);
     };
 
@@ -76,7 +78,7 @@ const CharacterDetail = ({ fetchCharacterById, character, fetchEpisodeList, epis
                         <Typography variant="h5" component="div" gutterBottom>{'Episoded info'}</Typography>
                         {episodes && !episodes.loading && !episodes.error && (<Box sx={{ width: '100%' }}>
                             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                                <Tabs value={currentTab} onChange={handleChange} aria-label="episode tabs">
+                                <Tabs value={currentTab} onChange={handleTabChange} aria-label="episode tabs">
                                     {episodes.data.map(episode => <Tab label={`Episode ${episode.id}`} />)}
                                 </Tabs>
                             </Box>

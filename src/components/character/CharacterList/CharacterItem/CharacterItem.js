@@ -4,6 +4,7 @@ import { Paper, Typography, Button } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { useHistory } from 'react-router-dom';
 
+/*This component is the one that render the as a card on the list of characters*/
 
 const CharacterItem = ({id, name, status, species, image}) => {
     const classes = useStyles();

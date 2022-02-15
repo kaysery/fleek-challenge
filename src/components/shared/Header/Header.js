@@ -25,6 +25,11 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+/*This component is the drawer menu that renders the filters
+* on the left and manage switch between mobile and desktop
+* menu
+*/
+
   const Header = ({window, children})=> {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [drawerWidth,setDrawerWidth] = useState(DEFAULT_DRAWER_WIDTH);
