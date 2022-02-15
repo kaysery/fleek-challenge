@@ -13,6 +13,7 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import Loading from "../../shared/Loading";
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const MAX_NUMBER_EPISODES = 5;
 /*This component is the one that render the details
@@ -22,6 +23,7 @@ const CharacterDetail = ({fetchCharacterById, character, fetchEpisodeList, episo
     const params = useParams();
     const history = useHistory();
     const [currentTab, setCurrentTab] = React.useState(0);
+    const isMobile = useMediaQuery((theme) => theme.breakpoints.up('xs'));
 
     //getting the id from the path param /:id
     useEffect(() => {
@@ -78,14 +80,14 @@ const CharacterDetail = ({fetchCharacterById, character, fetchEpisodeList, episo
                     <Grid item xs={5} sm={6} md={12}>
                         <Typography variant="h5" component="div" gutterBottom>{'Episoded info'}</Typography>
                         {episodes && !episodes.loading && !episodes.error && (
-                            <Box sx={{width: '100%'}}>
+                            <Box sx={{width: '100%',maxWidth: (isMobile?'450px':'') }}>
                                 <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
                                     <Tabs value={currentTab}
                                           onChange={handleTabChange}
                                           aria-label="episode tabs"
                                           variant="scrollable"
-                                          scrollButtons
                                           allowScrollButtonsMobile
+                                          scrollButtons
                                     >
                                         {episodes.data.map(episode => <Tab label={`Episode ${episode.id}`}
                                                                            key={`${episode.id}-${episode.url}`}/>)}
