@@ -5,7 +5,7 @@ import { makeStyles } from '@mui/styles';
 import { useHistory } from 'react-router-dom';
 
 
-const CharacterItem = ({id,name,status,species,image}) => {
+const CharacterItem = ({id, name, status, species, image}) => {
     const classes = useStyles();
     const history = useHistory();
 

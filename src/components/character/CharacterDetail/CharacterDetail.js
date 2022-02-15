@@ -13,7 +13,6 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import Loading from "../../shared/Loading";
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import { ConstructionOutlined, StarRateSharp } from '@mui/icons-material';
 
 const MAX_NUMBER_EPISODES = 5;
 
@@ -100,8 +99,6 @@ const CharacterDetail = ({ fetchCharacterById, character, fetchEpisodeList, epis
 
 function TabPanelEpisode(props) {
     const { value, index, ...restProps } = props;
-
-    console.log(restProps);
     return (
         <div
             role="tabpanel"

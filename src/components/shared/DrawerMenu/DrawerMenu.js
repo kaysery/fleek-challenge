@@ -11,6 +11,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 const DrawerMenu = ({ onSearchClick }) => {
 
@@ -99,5 +100,9 @@ const DrawerMenu = ({ onSearchClick }) => {
     </Box>
   )
 }
+
+DrawerMenu.propTypes = {
+  onSearchClick: PropTypes.func.isRequired,
+};
 
 export default DrawerMenu;

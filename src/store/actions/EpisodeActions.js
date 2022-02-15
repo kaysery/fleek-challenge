@@ -10,14 +10,15 @@ export const fetchEpisodeList = (episodes) => {
         dispatch(loadingEpisodes());
         const episodesGetList = episodes.map( epi => axios.get(epi) );
 
-        Promise.all(episodesGetList)
+       return Promise.all(episodesGetList)
             .then(res => {
                 /*the setTimeout it's only to show you the loading spinner 😄 
                 if you want to try the normal implementation just comment the setTimeout code and
                 uncomment the commented code below
                 */
-
+               
                 //dispatch(successEpisodes(res.map(item => item.data)));
+
                 setTimeout(() => {
                     dispatch(successEpisodes(res.map(item => item.data)));
                 }, 1500);

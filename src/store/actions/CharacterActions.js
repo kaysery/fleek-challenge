@@ -13,7 +13,7 @@ export const fetchCharacterById = (id) => {
     return dispatch => {
         dispatch(loadingSingleCharacter());
 
-        axios.get(`https://rickandmortyapi.com/api/character/`+id)
+        return axios.get(`https://rickandmortyapi.com/api/character/`+id)
             .then(res => {
                 /*the setTimeout it's only to show you the loading spinner 😄 
                 if you want to try the normal implementation just comment the setTimeout code and
@@ -39,7 +39,7 @@ export const fetchCharacterList = (filters) => {
         if (filters)
             qs = ObjToQueryParamsString(filters);
 
-        axios.get(`https://rickandmortyapi.com/api/character?${qs}`)
+      return axios.get(`https://rickandmortyapi.com/api/character?${qs}`)
             .then(res => {
                 /*the setTimeout it's only to show you the loading spinner 😄 
                 if you want to try the normal implementation just comment the setTimeout code and
