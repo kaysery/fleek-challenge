@@ -73,7 +73,7 @@ const CharacterList = ({ fetchCharacterList, characters }) => {
             <Grid container spacing={{ xs: 2, md: 4 }} columns={{ xs: 4, sm: 8, md: 12 }} ref={refScrollUp}>
                 {characters && !characters?.loading && !characters.error && characters.data.map((item, index) => (
                     <Grid item xs={4} sm={4} md={4} key={index}>
-                        <CharacterItem {...item}></CharacterItem>
+                        <CharacterItem {...item} key={`${item.id}-${item.name}`}></CharacterItem>
                     </Grid>
                 ))
                 }
@@ -87,7 +87,9 @@ const CharacterList = ({ fetchCharacterList, characters }) => {
                 display: 'block',
                 marginLeft: 'auto',
                 marginRight: 'auto',
-                marginTop: '3rem'
+                marginTop: '3rem',
+                width:'100%',
+                maxWidth:'400px'
             }} src={ErrorFetchingImage}></img>}
 
             {showScroll && <Fab 

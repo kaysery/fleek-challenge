@@ -6,7 +6,9 @@ const NotFound = () =>(
         display: 'block',
         marginLeft: 'auto',
         marginRight: 'auto',
-        marginTop: '3rem'
+        marginTop: '3rem',
+        width:'100%',
+        maxWidth:'400px'
     }} src={ErrorNotFoundImage}></img>
 )
 

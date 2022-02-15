@@ -20,7 +20,6 @@ const DEFAULT_DRAWER_WIDTH = 340;
 const useStyles = makeStyles((theme) => ({
     logo:{
          width:'16rem',
-         height:'6rem',
          margin:'auto'
     }
 }));
